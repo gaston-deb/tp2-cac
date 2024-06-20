@@ -1,9 +1,11 @@
-from flask import Flask
+import mysql.connector
 
-app = Flask(__name__)
+config_dev = {
+    "user": 'root',
+    'password': '',
+    'host': '127.0.0.1',
+    'database': 'backend_c24261_g19',
+    
+}
 
-def inicio():
-    return "TP Back_End_Python-C24261 G19"
-
-if __name__ == "main":
-    app.run()
+conexion = mysql.connector.connect(**config_dev)
