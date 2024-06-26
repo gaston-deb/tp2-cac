@@ -8,4 +8,11 @@ config_dev = {
     
 }
 
+config_prod = {
+    "user": "gastondeb",
+    "password": "Ingreso01",
+    "host": "gastondeb.mysql.pythonanywhere-services.com",
+    "database": "gastondeb$tp2-cac",
+}
+
 conexion = mysql.connector.connect(**config_dev)
