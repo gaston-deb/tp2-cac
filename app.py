@@ -19,6 +19,9 @@ def mostrar_datos():
 @app.route('/api/celular', methods=['GET'])
 def api_celulares():
     celulares = Celular.obtener()
+    if type(celulares) != list: # si vuelve sólo uno
+        celulares = [celulares] 
+
     datos = [celular.__dict__ for celular in celulares]
     return jsonify(datos)
 
