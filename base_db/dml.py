@@ -1,3 +1,5 @@
+
+#copiado completamente degi la "clase Tabla" dada en clases
 class Tabla:
     
     # Constructor

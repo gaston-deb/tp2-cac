@@ -19,6 +19,7 @@ from auxiliares.cifrado import encriptar
 #    def __init__(self, valores):
 #        super().crear(valores)
 
+# copiado de la clase docente
 class Celular(Tabla):
     
     tabla = 'celular'

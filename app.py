@@ -15,6 +15,7 @@ def inicio():
 def mostrar_datos():
     return jsonify(obtener_datos())
 
+# hice igual que en la vista docentes del ejemplo dado en clase
 @app.route('/api/celular', methods=['GET'])
 def api_celulares():
     celulares = Celular.obtener()
