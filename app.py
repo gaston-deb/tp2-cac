@@ -2,6 +2,7 @@ from flask import Flask
 from flask import jsonify
 
 from componentes.datos import obtener_datos
+from componentes.modelos import Celular
 
 app = Flask(__name__)
 
@@ -13,6 +14,12 @@ def inicio():
 @app.route('/api/test')
 def mostrar_datos():
     return jsonify(obtener_datos())
+
+@app.route('/api/celular', methods=['GET'])
+def api_celular():
+    celular = Celular.obtener()
+    datos = [celular.__dict__ for celular in celular]
+    return jsonify(datos)
 
 if __name__ == "main":
     app.run()

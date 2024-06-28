@@ -1,6 +1,7 @@
 # Clases que corresponden a entidades en la BBDD
 from base_db.dml import Tabla
 from base_db.config_db import conexion as con
+from auxiliares.cifrado import encriptar
 
 #class Nivel(Tabla):
 #    tabla = 'nivel'
@@ -17,3 +18,12 @@ from base_db.config_db import conexion as con
     
 #    def __init__(self, valores):
 #        super().crear(valores)
+
+class Celular(Tabla):
+    
+    tabla = 'celular'
+    conexion = con
+    campos = ('id', 'modelo', 'pantalla', 'precio')
+    
+    def __init__(self, *args, de_bbdd=False):
+        super().crear(args, de_bbdd)

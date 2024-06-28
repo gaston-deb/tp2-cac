@@ -1,4 +1,4 @@
-from componentes.config_db import conexion
+from base_db.config_db import conexion
 
 def obtener_datos():
     con = conexion
