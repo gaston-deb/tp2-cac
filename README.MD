@@ -1,6 +1,6 @@
 # Proyecto PhoneUp (_backend_)
 
-![Image text](https://github.com/Raimun2000/TP1-Cac/blob/master/imagenes/logo-del-portal-telefonia.png)
+![Image text](https://github.com/Raimun2000/TP1-Cac/blob/master/imagenes/nombre-de-la-empresa2.jpg)
 
 Desarrollo del Trabajo Práctico Nro 2 de la 2da. parte del curso **Python Fullstack** del programa Codo a Codo de la Ciudad Autónoma de Buenos Aires.
 
