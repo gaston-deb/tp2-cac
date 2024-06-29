@@ -1,14 +1,12 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask import jsonify
-
-
 
 app = Flask(__name__)
 
 @app.route('/')
 
 def inicio():
-    return "<h1>TP Back_End_Python-C24261 G19</h1>"
+    return render_template('principal.html')
 
 from componentes.vistas_api import *
 

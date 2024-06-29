@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PhoneUp:::Administración</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="w-100 p4">&nbsp;</div>
+      <h1 class="mt-4 p4 text-center bg-info"><span><img
+            src="{{ url_for('static', filename='img/nombre-de-la-empresa.jpg') }}" alt="Logo de la empresa PhoneUp"
+            width="30"></span>::: PhoneUp ::: Administración :::</h1>
+      <div class="container pt-2">
+        <div class="row">
+          <div class="col-6">
+            <div class="card border-info mb-3">
+              <div class="card-header bg-info text-white h2">Productos</div>
+              <div class="card-body">
+                <p>Aquí la info de los productos desde la BBDD con la opciones de Alta / modificación / baja</p>
+                <div class="bg-danger">
+                  <a class="btn bg-warning text-dark" href="#">Nuevo</a>
+                  <a class="btn bg-warning text-dark" href="#">Modificar</a>
+                  <a class="btn bg-warning text-dark" href="#">Nuevo</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
