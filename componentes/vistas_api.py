@@ -2,23 +2,24 @@ from flask import jsonify
 #from flask import request
 
 from app import app
-from componentes.modelos import Celular
-from componentes.modelos import Accesorio
+from componentes.modelos import Productos
+from componentes.modelos import Clientes
 
-@app.route('/api/celular', methods=['GET'])
-def api_celulares():
-    celulares = Celular.obtener()
-    if type(celulares) != list: # si vuelve sólo uno
-        celulares = [celulares] 
 
-    datos = [celular.__dict__ for celular in celulares]
+@app.route('/api/productos', methods=['GET'])
+def api_productos():
+    producto = Productos.obtener()
+    if type(producto) != list: # si vuelve sólo uno
+        producto = [producto] 
+
+    datos = [productos.__dict__ for productos in producto]
     return jsonify(datos)
 
-@app.route('/api/accesorio', methods=['GET'])
-def api_accesorios():
-    accesorios = Accesorio.obtener()
-    if type(accesorios) != list: # si vuelve sólo uno
-        accesorios = [accesorios] 
+@app.route('/api/clientes', methods=['GET'])
+def api_clientes():
+    cliente = Clientes.obtener()
+    if type(cliente) != list: # si vuelve sólo uno
+        cliente = [cliente] 
 
-    datos = [accesorio.__dict__ for accesorio in accesorios]
+    datos = [clientes.__dict__ for clientes in cliente]
     return jsonify(datos)

@@ -4,20 +4,20 @@ from base_db.config_db import conexion as con
 from auxiliares.cifrado import encriptar
 
 
-class Celular(Tabla):
+class Productos(Tabla):
     
-    tabla = 'celular'
+    tabla = 'productos'
     conexion = con
-    campos = ('id', 'modelo', 'img_url', 'precio')
+    campos = ('id', 'tipo', 'marca', 'modelo', 'detalle', 'precio', 'imagen', 'estado')
     
     def __init__(self, *args, de_bbdd=False):
         super().crear(args, de_bbdd)
 
-class Accesorio(Tabla):
+class Clientes(Tabla):
 
-    tabla = 'accesorio'
+    tabla = 'clientes'
     conexion = con
-    campos = ('id', 'modelo', 'img_url', 'precio')
+    campos = ('id', 'nombre', 'email', 'telefono', 'activo')
     
     def __init__(self, *args, de_bbdd=False):
         super().crear(args, de_bbdd)
