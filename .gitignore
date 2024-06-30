@@ -1,6 +1,3 @@
 entorno24261
 requirements.txt
 venv
-.gitignore
-__pycache__
-config_db.py
