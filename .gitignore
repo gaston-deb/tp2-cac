@@ -1,3 +1,5 @@
 entorno24261
 requirements.txt
 venv
+base_db/config_db.py
+.gitignore
