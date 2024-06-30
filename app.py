@@ -1,5 +1,5 @@
-from flask import Flask, render_template
-from flask import jsonify
+from flask import Flask, render_template, jsonify
+import requests
 
 #PARA LOS CARACTERES ESPECIALES
 from flask_cors import CORS
@@ -13,7 +13,12 @@ cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 @app.route('/')
 
 def inicio():
-    return render_template('principal.html')
+    j_prod = requests.get('http://localhost:5000/api/productos')
+    productos = j_prod.json()
+    j_cli = requests.get('http://localhost:5000/api/clientes')
+    clientes = j_cli.json()
+
+    return render_template('principal.html', productos=productos, clientes=clientes)
 
 from componentes.vistas_api import *
 

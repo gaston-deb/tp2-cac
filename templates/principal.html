@@ -21,14 +21,53 @@
         <div class="row">
           <div class="col-6 p-2">
             <div class="card border-info mb-3">
-              <div class="card-header bg-primary text-center text-white h2">Productos</div>
+              <div class="card-header text-center">
+                <h2>Productos</h2>
+                <h4>
+                  <a class="btn bg-success text-white m-2" style="border: none; text-decoration: none;"
+                    href="productos/agregar">➕ Añadir nuevo</a>
+                </h4>
+              </div>
               <div class="card-body">
-                <p>Aquí la info de los productos desde la BBDD con la opciones de Alta / modificación / baja</p>
-                <div class="text-center">
-                  <a class="btn bg-success text-white m-2" href="#">Nuevo</a>
-                  <a class="btn bg-warning text-dark m-2" href="#">Modificar</a>
-                  <a class="btn bg-danger text-white m-2" href="#">Eliminar</a>
-                </div>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Marca</th>
+                      <th scope="col">Modelo</th>
+                      <th scope="col">Precio</th>
+                      <th scope="col">Foto</th>
+                      <!-- id  
+                        Oculto el id para luego hacer modificación o eliminación del registro.
+                        -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for x in productos %}
+                    <tr>
+                      <th>{{ x.marca }}</th>
+                      <td>{{ x.modelo }}</td>
+                      <td>$ {{ x.precio }}</td>
+                      <td>
+                        <button type="button" class="border-none" data-bs-toggle="modal"
+                          data-bs-target="#modalImagen{{ x.id }}">
+                          <img src="{{ url_for('static', filename='img/pics/thumb/' ~ x.imagen) }}"
+                            alt="{{ x.detalle }}" title="{{ x.detalle }}">
+                        </button>
+                      </td>
+                      <td>
+                        <form action="/productos/editar/{{ productos.id }}" method="post" style="display:inline;">
+                          <button type="submit" class="btn bg-warning text-dark">Editar</button>
+                        </form>
+                      </td>
+                      <td>
+                        <form action="/productos/eliminar/{{ productos.id }}" method="post" style="display:inline;">
+                          <button type="submit" class="btn bg-danger text-white">Borrar</button>
+                        </form>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -36,12 +75,45 @@
             <div class="card border-info mb-3">
               <div class="card-header bg-primary text-center text-white h2">Clientes</div>
               <div class="card-body">
-                <p>Aquí la info de los productos desde la BBDD con la opciones de Alta / modificación / baja</p>
-                <div class="text-center">
-                  <a class="btn bg-success text-white m-2" href="#">Nuevo</a>
-                  <a class="btn bg-warning text-dark m-2" href="#">Modificar</a>
-                  <a class="btn bg-danger text-white m-2" href="#">Eliminar</a>
-                </div>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Teléfono</th>
+                      <th scope="col">Activo</th>
+                      <!-- id  
+                                        Oculto el id para luego hacer modificación o eliminación del registro.
+                                        -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for v in clientes %}
+                    <tr>
+                      <th>{{ v.nombre }}</th>
+                      <td>{{ v.email }}</td>
+                      <td>{{ v.telefono }}</td>
+                      <td>
+                        {% if v.activo == 1 %}
+                        SI
+                        {% elif v.activo == 0 %}
+                        NO
+                        {% endif %}
+                      </td>
+                      <td>
+                        <form action="/clientes/editar/{{ clientes.id }}" method="post" style="display:inline;">
+                          <button type="submit" class="btn bg-warning text-dark">Editar</button>
+                        </form>
+                      </td>
+                      <td>
+                        <form action="/clientes/eliminar/{{ clientes.id }}" method="post" style="display:inline;">
+                          <button type="submit" class="btn bg-danger text-white">Borrar</button>
+                        </form>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -50,6 +122,31 @@
     </div>
 
   </div>
+
+  <!-- Modal para cada imagen -->
+  {% for x in productos %}
+  <div class="modal fade" style="max-width: 85%; text-align: center" id="modalImagen{{ x.id }}" tabindex="-1"
+    role="dialog" aria-labelledby="modalImagenLabel{{ x.id }}" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalImagenLabel{{ x.id }}">{{ x.marca }} modelo: {{ x.modelo }}</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="{{ url_for('static', filename='img/pics/' ~ x.imagen) }}" alt="{{ x.detalle }}"
+            style="max-width: 80%; max-height: 80vh;">
+          <h3>Precio: $ {{ x.precio }}</h3>
+          <h4>{{ x.detalle }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <!-- Fin del Modal -->
+
+
+  <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 </body>
 
 </html>
