@@ -15,4 +15,4 @@ config_prod = {
     "database": "gastondeb$tp2-cac",
 }
 
-conexion = mysql.connector.connect(**config_dev)
+conexion = mysql.connector.connect(**config)

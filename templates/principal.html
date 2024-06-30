@@ -12,21 +12,35 @@
 <body>
   <div class="container-fluid">
     <div class="row">
-      <div class="w-100 p4">&nbsp;</div>
-      <h1 class="mt-4 p4 text-center bg-info"><span><img
-            src="{{ url_for('static', filename='img/nombre-de-la-empresa.jpg') }}" alt="Logo de la empresa PhoneUp"
-            width="30"></span>::: PhoneUp ::: Administración :::</h1>
+      <div class="col-12 text-center">
+        <img src="{{ url_for('static', filename='img/nombre-de-la-empresa.jpg') }}" alt="Logo de la empresa PhoneUp"
+          width="200">
+      </div>
+      <h1 class="mt-4 p4 text-center bg-info">::: Administración :::</h1>
       <div class="container pt-2">
         <div class="row">
-          <div class="col-6">
+          <div class="col-6 p-2">
             <div class="card border-info mb-3">
-              <div class="card-header bg-info text-white h2">Productos</div>
+              <div class="card-header bg-primary text-center text-white h2">Productos</div>
               <div class="card-body">
                 <p>Aquí la info de los productos desde la BBDD con la opciones de Alta / modificación / baja</p>
-                <div class="bg-danger">
-                  <a class="btn bg-warning text-dark" href="#">Nuevo</a>
-                  <a class="btn bg-warning text-dark" href="#">Modificar</a>
-                  <a class="btn bg-warning text-dark" href="#">Nuevo</a>
+                <div class="text-center">
+                  <a class="btn bg-success text-white m-2" href="#">Nuevo</a>
+                  <a class="btn bg-warning text-dark m-2" href="#">Modificar</a>
+                  <a class="btn bg-danger text-white m-2" href="#">Eliminar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 p-2">
+            <div class="card border-info mb-3">
+              <div class="card-header bg-primary text-center text-white h2">Clientes</div>
+              <div class="card-body">
+                <p>Aquí la info de los productos desde la BBDD con la opciones de Alta / modificación / baja</p>
+                <div class="text-center">
+                  <a class="btn bg-success text-white m-2" href="#">Nuevo</a>
+                  <a class="btn bg-warning text-dark m-2" href="#">Modificar</a>
+                  <a class="btn bg-danger text-white m-2" href="#">Eliminar</a>
                 </div>
               </div>
             </div>
