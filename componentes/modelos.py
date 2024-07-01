@@ -21,3 +21,6 @@ class Clientes(Tabla):
     
     def __init__(self, *args, de_bbdd=False):
         super().crear(args, de_bbdd)
+        
+        
+        

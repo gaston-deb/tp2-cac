@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modificar Clientes</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Modificar Clientes</h1>
+    <form action="/clientes/modificar/{{ clientes.id }}" method="post">
+      <div class="form-group">
+        <label for="nombre">Nombre del Cliente</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ cliente.nombre }}">
+      </div>
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+  </div>
+</body>
+
+</html>
