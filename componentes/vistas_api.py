@@ -1,5 +1,5 @@
 from flask import jsonify, request, redirect, url_for, render_template
-#from flask import request
+from werkzeug.datastructures import ImmutableMultiDict
 
 from app import app
 from componentes.modelos import Productos
@@ -61,6 +61,27 @@ def agregar_clientes():
     return jsonify(datos)
 
 # Ruta clientes/editar/
+@app.route('/clientes/editar/<int:id>', methods=['GET', 'POST'])
+def modificar_cliente(id):
+    campos = Clientes.obtener("id",id)
+    return render_template('modificar_clientes.html', campos=campos)
+
+# Ruta para guardar cambios de clientes editados o agregados
+@app.route('/clientes/guardarCliente/<int:id>', methods=['POST'])
+def guardarCliente(id):
+    datos_formulario = request.form
+    datos_inmutables = datos_formulario
+    # Convertir a lista de tuplas modificable
+    datos_modificables = [(key, value) for key, value in datos_inmutables.items()]
+    # Agregar campo "activo" con valor específico (ejemplo)
+    activo = 1 if datos_formulario.get('activo') == 'on' else 0
+    if len(datos_modificables) == 4:
+        # Eliminar el último elemento de la lista
+        datos_modificables.pop()
+    datos_modificables.append(('activo', activo))  # Aquí agregamos 'activo' con valor 1
+    datos = dict(datos_modificables)
+    mensaje = Clientes.actualizar(id, datos)
+    return f"<div style='width:100%; text-align: center;'><h1>Cliente a modificar con id Nº {id}</h1><hr><h3>Estado: {mensaje}</h3><hr><h2><a href='/'>Regrese a la página principal 👉</a></h2>"
 
 # Ruta clientes/eliminar
 @app.route('/clientes/eliminar/<int:id>', methods=['GET', 'POST'])

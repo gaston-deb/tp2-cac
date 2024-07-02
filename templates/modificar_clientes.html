@@ -4,19 +4,63 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
   <title>Modificar Clientes</title>
 </head>
 
 <body>
+
+  <!-- 
+    Campos: 
+        nombre (V100), 
+        email (V100), 
+        telefono (V50), 
+        activo (Tynyint 1) 
+-->
+
   <div class="container">
-    <h1>Modificar Clientes</h1>
-    <form action="/clientes/modificar/{{ clientes.id }}" method="post">
-      <div class="form-group">
-        <label for="nombre">Nombre del Cliente</label>
-        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ cliente.nombre }}">
-      </div>
-      <button type="submit" class="btn btn-primary">Guardar</button>
-    </form>
+    <h1 class="bg-success text-white rounded-pill text-center mt-4 p-4">Modificar Clientes</h1>
+    <div class="row m-auto w-50 mt-4 h5 text-primary">
+      <form action="/clientes/guardarCliente/{{ campos.id }}" method="post">
+        <div class="row mb-3">
+          <div class="form-group">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ campos.nombre }}">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ campos.email }}">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="text" class="form-control" id="telefono" name="telefono" value="{{ campos.telefono }}">
+          </div>
+        </div>
+        <div class="row mb-3 p-4">
+          <div class="form-group">
+            <span><small class="text-danger">Pulse la
+                llave para cambiar el estado</small></span>
+            {% if campos.activo %}
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="activo" name="activo" value="1" checked>
+              <label class="form-check-label text-primary" for="activo">Cliente Activo ó Inactivo</label>
+            </div>
+            {% else %}
+            <div class="form-check form-switch">
+              <label class="form-check-label  text-primary" for="activo">Cliente Activo ó Inactivo</label>
+              <input class="form-check-input" type="checkbox" role="switch" id="activo" name="activo">
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </form>
+    </div>
   </div>
 </body>
 
