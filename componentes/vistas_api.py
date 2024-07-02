@@ -39,7 +39,14 @@ def modificar_producto(id):
 def eliminar_producto(id):
     mensaje = Productos.eliminar(id)
     return f"<div style='width:100%; text-align: center;'><h1>El producto tratado tenía el id Nº {id}</h1><hr><h3>Estado: {mensaje}</h3><hr><h2><a href='/'>Regrese a la página principal 👉</a></h2>"
-    #return redirect(url_for('inicio'))
+
+# Ruta para guardar cambios de productos editados o agregados
+@app.route('/productos/guardarProducto/<int:id>', methods=['POST'])
+def guardarProducto(id):
+    datos = request.form
+    mensaje = Productos.actualizar(id, datos)
+    return f"<div style='width:100%; text-align: center;'><h1>Producto a modificar con id Nº {id}</h1><hr><h3>Estado: {mensaje}</h3><hr><h2><a href='/'>Regrese a la página principal 👉</a></h2>"
+
 
 #-----------------------------------------------------
 

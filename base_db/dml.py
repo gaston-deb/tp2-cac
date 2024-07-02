@@ -50,8 +50,25 @@ class Tabla:
     
     # Modificación
     @classmethod 
-    def actualizar(cls):
-        pass
+    def actualizar(cls, id, post_data):
+        """
+        UPDATE tabla
+        SET campo1 = %s, campo2 = %s, ...
+        WHERE id = %s;
+        """
+        set_clause = ", ".join([f"{campo} = %s" for campo in cls.campos[1:]])
+        consulta = f"UPDATE {cls.tabla} SET {set_clause} WHERE id = %s;"
+        
+        # Extraer los valores del formulario POST (post_data)
+        nuevos_valores = [post_data[campo] for campo in cls.campos[1:]]
+        datos = tuple(nuevos_valores) + (id,)
+        
+        rta_db = cls.__conectar(consulta, datos)
+        
+        if rta_db:
+            return 'Actualización exitosa.'
+        
+        return 'No se pudo actualizar el registro.'
     
     # Eliminación
     @classmethod
