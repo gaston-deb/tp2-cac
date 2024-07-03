@@ -19,7 +19,7 @@ class Tabla:
             for campo, valor in zip(self.campos[1:], valores):
                 setattr(self, campo, valor)
     
-    def guardar_db(self):
+    def guardar_db(self, campos):
         """
         INSERT INTO tabla (n, ..., z) VALUES
             (%s,... %s)

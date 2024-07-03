@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <div class="container p-4 mt-4 rounded-4" style="background-color: #ccc;">
+  <div class="container">
     <h1 class="bg-success text-white rounded-pill text-center mt-4 p-4">Modificar Producto</h1>
     <div class="row m-auto w-50 mt-4 h5 text-primary">
       <form action="/productos/guardarProducto/{{ campos.id }}" method="POST">
@@ -54,16 +54,7 @@
           </select>
         </div>
         <hr>
-        <div class="row">
-          <div class="col-6">
-            <button type="submit" class="btn btn-primary mt-4 text-center">Guardar</button>
-          </div>
-          <div class="col-6">
-            <a href="/productos" class="btn btn-warning">
-              <h5>Cancelar modificación y volver</h5>
-            </a>
-          </div>
-        </div>
+        <button type="submit" class="btn btn-primary mt-4 text-center">Guardar</button>
       </form>
     </div>
   </div>

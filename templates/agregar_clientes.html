@@ -18,60 +18,40 @@
         activo (Tynyint 1) 
 -->
 
-  <div class="container p-4 mt-4 rounded-4" style="background-color: #ccc;">
-    <h1 class="bg-success text-white rounded-pill text-center mt-4 p-4">Modificar Clientes</h1>
+  <div class="container">
+    <h1 class="bg-success text-white rounded-pill text-center mt-4 p-4">Añadir Clientes</h1>
     <div class="row m-auto w-50 mt-4 h5 text-primary">
-      <form action="/clientes/guardarCliente/{{ campos.id }}" method="post">
+      <form action="/clientes/altaCliente" method="POST">
         <div class="row mb-3">
           <div class="form-group">
             <label for="nombre">Nombre completo:</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ campos.nombre }}">
+            <input type="text" class="form-control" id="nombre" name="nombre">
           </div>
         </div>
         <div class="row mb-3">
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" value="{{ campos.email }}">
+            <input type="email" class="form-control" id="email" name="email">
           </div>
         </div>
         <div class="row mb-3">
           <div class="form-group">
             <label for="telefono">Teléfono</label>
-            <input type="text" class="form-control" id="telefono" name="telefono" value="{{ campos.telefono }}">
+            <input type="text" class="form-control" id="telefono" name="telefono">
           </div>
         </div>
         <div class="row mb-3 p-4">
           <div class="form-group bg-info p-4">
-            {% if campos.activo %}
             <span><small class="text-primary bg-white">Pulse la
                 llave para cambiar el estado - Estado original: ACTIVO</small></span>
             <div class="form-check form-switch mt-2">
               <input class="form-check-input" type="checkbox" role="switch" id="activo" name="activo" value="1" checked>
               <label class="form-check-label text-dark" for="activo">Cliente Activo ó Inactivo</label>
             </div>
-            {% else %}
-            <span><small class="text-secondary bg-dark">Pulse la
-                llave para cambiar el estado- Estado original: INACTIVO</small></span>
-            <div class="form-check form-switch mt-2">
-              <label class="form-check-label text-dark" for="activo">Cliente Activo ó Inactivo</label>
-              <input class="form-check-input" type="checkbox" role="switch" id="activo" name="activo">
-            </div>
-            {% endif %}
           </div>
         </div>
         <hr>
-        <div class="row">
-          <div class="col-6">
-            <button type="submit" class="btn btn-primary">
-              <h5>Guardar</h5>
-            </button>
-          </div>
-          <div class="col-6">
-            <a href="/clientes" class="btn btn-warning">
-              <h5>Cancelar modificación y volver</h5>
-            </a>
-          </div>
-        </div>
+        <button type="submit" class="btn btn-primary">Guardar nuevo Cliente</button>
       </form>
     </div>
   </div>
