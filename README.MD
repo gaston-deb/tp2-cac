@@ -6,7 +6,9 @@ Desarrollo del Trabajo Práctico Nro 2 de la 2da. parte del curso **Python Fulls
 
 ## Acerca del proyecto
 
-El desarrollo Front-End se basó en un portal de venta de celulares y accesorios relacionados. Dicho Front-End se encuentra en [otro repositorio](https://github.com/Raimun2000/TP1-Cac/) y se puede acceder a su [despliegue](https://gastondeb.pythonanywhere.com/) realizado con PythonAnyWhere.
+Este proyecto se pensó como accesorio al Front-End que se realizó en el TP1. Se basó en un portal de venta de celulares y accesorios relacionados.
+Este TP2 sería su Back-End y se puede acceder a su **[despliegue](https://gastondeb.pythonanywhere.com/)** realizado con PythonAnyWhere.
+El proyecto del TP1 se encuentra en [otro repositorio](https://github.com/Raimun2000/TP1-Cac/).
 
 ## Contenido
 
