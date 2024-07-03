@@ -18,7 +18,7 @@
         activo (Tynyint 1) 
 -->
 
-  <div class="container">
+  <div class="container rounded-75 p-4 mt-4" style="background-color: #ccc;">
     <h1 class="bg-success text-white rounded-pill text-center mt-4 p-4">Añadir Clientes</h1>
     <div class="row m-auto w-50 mt-4 h5 text-primary">
       <form action="/clientes/altaCliente" method="POST">
@@ -51,7 +51,18 @@
           </div>
         </div>
         <hr>
-        <button type="submit" class="btn btn-primary">Guardar nuevo Cliente</button>
+        <div class="row mt-4 text-center">
+          <div class="col-6">
+            <button type="submit" class="btn btn-primary">
+              <h5>Guardar</h5>
+            </button>
+          </div>
+          <div class="col-6">
+            <a href="/clientes" class="btn btn-warning">
+              <h5>Cancelar nuevo cliente</h5>
+            </a>
+          </div>
+        </div>
       </form>
     </div>
   </div>

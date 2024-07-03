@@ -19,6 +19,23 @@ class Tabla:
             for campo, valor in zip(self.campos[1:], valores):
                 setattr(self, campo, valor)
     
+    # def guardar_db(self, campos):
+    #     """
+    #     INSERT INTO tabla (n, ..., z) VALUES
+    #         (%s,... %s)
+    #     """
+    #     campos_q = str(self.campos[1:]).replace("'", "`")
+    #     values_q = f"({'%s, ' * (len(self.campos)-2)} %s)"
+    #     consulta = (f"INSERT INTO {self.tabla} {campos_q} "
+    #                 f"VALUES {values_q};")
+    #     datos = tuple(vars(self).values())
+    #     rta_db = self.__conectar(consulta, datos)
+        
+    #     if rta_db:
+    #         return 'Creación exitosa.'
+        
+    #     return 'No se pudo crear el registro.'
+    
     def guardar_db(self, campos):
         """
         INSERT INTO tabla (n, ..., z) VALUES
@@ -28,14 +45,14 @@ class Tabla:
         values_q = f"({'%s, ' * (len(self.campos)-2)} %s)"
         consulta = (f"INSERT INTO {self.tabla} {campos_q} "
                     f"VALUES {values_q};")
-        datos = tuple(vars(self).values())
+        datos = tuple(campos[campo] for campo in self.campos[1:])  # Incluyendo todos los campos excepto 'id'
         rta_db = self.__conectar(consulta, datos)
         
         if rta_db:
             return 'Creación exitosa.'
         
         return 'No se pudo crear el registro.'
-    
+
     # Lectura
     @classmethod 
     def obtener(cls, campo=None, valor=None):
