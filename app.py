@@ -5,7 +5,8 @@ import requests
 from flask_cors import CORS
 
 app = Flask(__name__)
-app.json.ensure_ascii = False
+#app.json.ensure_ascii = False
+app.config['JSON_AS_ASCII'] = False
 
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
