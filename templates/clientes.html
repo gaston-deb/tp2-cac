@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PhoneUp:::Administración</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+
+<body style="min-width: 768px">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-2 mt-4">
+        <a class="btn btn-outline-dark" href='/'>
+          <h5>👈 Regresar a la página principal</h5>
+        </a>
+      </div>
+      <div class="col-8 text-center">
+        <img src="{{ url_for('static', filename='img/nombre-de-la-empresa.jpg') }}" alt="Logo de la empresa PhoneUp"
+          width="200">
+      </div>
+      <h1 class="mt-4 p-4 text-center bg-info">::: Área de administración de Clientes :::</h1>
+      <div class="container pt-2">
+        <div class="row">
+          <div class="col-12 text-center">
+            <a class="btn btn-outline-primary m-2" href="clientes/agregar">
+              <h2>➕ Añadir nuevo Cliente</h2>
+            </a>
+          </div>
+          <div class="col-12 p-2">
+            <div class="card border-info mb-3">
+              <div class="card-header text-center bg-success text-white h2">
+                Listado de Clientes actuales
+              </div>
+              <div class="card-body">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Teléfono</th>
+                      <th scope="col">Activo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for v in clientes %}
+                    <tr>
+                      <th>{{ v.nombre }}</th>
+                      <td>{{ v.email }}</td>
+                      <td>{{ v.telefono }}</td>
+                      <td>
+                        {% if v.activo == 1 %}
+                        SI
+                        {% elif v.activo == 0 %}
+                        NO
+                        {% endif %}
+                      </td>
+                      <td>
+                        <form action="/clientes/editar/{{ v.id }}" method="post" style="display:inline;">
+                          <button type="submit" class="btn bg-warning text-dark">Editar</button>
+                        </form>
+                      </td>
+                      <td>
+                        <form action="/clientes/eliminar/{{ v.id }}" method="post" style="display:inline;">
+                          <button type="submit" class="btn bg-danger text-white">Borrar</button>
+                        </form>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modal para cada imagen -->
+  {% for x in productos %}
+  <div class="modal fade" style="max-width: 85%; text-align: center" id="modalImagen{{ x.id }}" tabindex="-1"
+    role="dialog" aria-labelledby="modalImagenLabel{{ x.id }}" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalImagenLabel{{ x.id }}">{{ x.marca }} modelo: {{ x.modelo }}</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="{{ url_for('static', filename='img/pics/' ~ x.imagen) }}" alt="{{ x.detalle }}"
+            style="max-width: 50%; max-height: 80vh;">
+          <h3>Precio: $ {{ x.precio }}</h3>
+        </div>
+        <div class="modal-body text-center">
+          <h4>{{ x.detalle }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  {% endfor %}
+  <!-- Fin del Modal -->
+
+
+  <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+</body>
+
+</html>
